@@ -1,3 +1,4 @@
+
 import sys
 import spotipy
 import spotipy.util as util
@@ -5,7 +6,7 @@ import spotipy.util as util
 import time
 import sys
 
-#from rgbmatrix import RGBMatrix, RGBMatrixOptions
+from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from PIL import Image
 import requests
 from io import BytesIO
@@ -23,17 +24,22 @@ token = util.prompt_for_user_token(username, scope)
 if token:
     sp = spotipy.Spotify(auth=token)
     result = sp.current_user_playing_track()
-    song = result["item"]["name"]
-    imageURL = result["item"]["album"]["images"][0]["url"]
-    print song
-    print imageURL
+    
+    if result is None:
+      print("No song is currently playing")
+    else:  
+      song = result["item"]["name"]
+      artist = result["item"]["album"]["artists"][0]["name"]
+      imageURL = result["item"]["album"]["images"][0]["url"]
+      
+      response = requests.get(imageURL)
+      image = Image.open(BytesIO(response.content))
+
+      print ("Song: ", song)
+      print ("Artist: ", artist)
+      print ("Image URL: ", imageURL)
 else:
     print("Can't get token for", username)
-
-response = requests.get(imageURL)
-image = Image.open(BytesIO(response.content))
-
-image.show()
 
 # Configuration for the matrix
 # options = RGBMatrixOptions()
