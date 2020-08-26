@@ -9,7 +9,7 @@ def display(image):
   options.rows = 32
   options.chain_length = 1
   options.parallel = 1
-  options.hardware_mapping = 'regular'  # If you have an Adafruit HAT: 'adafruit-hat'
+  options.hardware_mapping = 'adafruit-hat'  # If you have an Adafruit HAT: 'adafruit-hat'
 
   matrix = RGBMatrix(options = options)
 
@@ -18,9 +18,9 @@ def display(image):
 
   matrix.SetImage(image.convert('RGB'))
 
-  try:
-     print("Press CTRL-C to stop.")
-     while True:
-        time.sleep(100)
-  except KeyboardInterrupt:
-     sys.exit(0)
+#  try:
+#     print("Press CTRL-C to stop.")
+#     while True:
+#        time.sleep(100)
+#  except KeyboardInterrupt:
+#     sys.exit(0)
