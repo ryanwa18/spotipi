@@ -22,13 +22,15 @@ def getSongInfo(username):
         song = result["item"]["name"]
         artist = result["item"]["album"]["artists"][0]["name"]
         imageURL = result["item"]["album"]["images"][0]["url"]
-      
+        # Remaining seconds in the song
+        timeLeft = (result["item"]["duration_ms"]/1000) - (result["progress_ms"]/1000) 
         response = requests.get(imageURL)
         image = Image.open(BytesIO(response.content))
 
         logging.info("Song: %s ", song)
         logging.info("Artist: %s", artist)
         logging.info("Image URL: %s ", imageURL)
+        logging.info("Time Left: %ss ", timeLeft)
+        display(image, timeLeft)
   else:
       print("Can't get token for", username)
-#       display(image)

@@ -15,13 +15,9 @@ if len(sys.argv) > 1:
     # automatically deletes logs more than 2000 bytes
     handler = RotatingFileHandler('spotipy.log', maxBytes=2000,  backupCount=3)
     logger.addHandler(handler)
-    
-    # Creates scheduler to get song info every 10s
-    schedule.every(10).seconds.do(getSongInfo, username=username)
-    
+
     while 1:
-      schedule.run_pending()
-      time.sleep(1)
+      getSongInfo(username)
 else:
     print("Usage: %s username" % (sys.argv[0],))
     sys.exit()

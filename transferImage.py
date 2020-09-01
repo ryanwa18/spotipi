@@ -3,7 +3,7 @@ from rgbmatrix import RGBMatrix, RGBMatrixOptions
 import time
 import sys
 
-def display(image):
+def display(image, timeLeft):
   # Configuration for the matrix
   options = RGBMatrixOptions()
   options.rows = 32
@@ -16,11 +16,21 @@ def display(image):
   # Make image fit our screen.
   image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
 
-  matrix.SetImage(image.convert('RGB'))
+  for n in range(-32, 0):  # Start off top-left, move off bottom-right
+    matrix.SetImage(image.convert('RGB'), n, 0)
+    time.sleep(0.10)  
+    matrix.Clear()
 
+  matrix.SetImage(image.convert('RGB')) 
+  time.sleep(10)
+  
+  for n in range(0, 33):  # Start off top-left, move off bottom-right
+    matrix.SetImage(image.convert('RGB'), n, 0)
+    time.sleep(0.15)
+    matrix.Clear()
 #  try:
-#     print("Press CTRL-C to stop.")
-#     while True:
-#        time.sleep(100)
+#      print("Press CTRL-C to stop.")
+#      while timeLeft > 10:
+#        time.sleep(5)
 #  except KeyboardInterrupt:
-#     sys.exit(0)
+#      sys.exit(0)
