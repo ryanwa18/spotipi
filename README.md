@@ -24,8 +24,13 @@ export SPOTIPY_CLIENT_ID=your_spotify_client_id
 export SPOTIPY_CLIENT_SECRET=your_spotify_secret_id
 export SPOTIPY_REDIRECT_URI=your_spotify_redirect_uri
 ```
+* Make sure to set the resource limit for root user
+```
+sudo su
+ulimit -Sr 99
+```
 ### Start Software
 ```
 cd spotipy
-python displayCoverArt.py <username>
+sudo python --preserve-env displayCoverArt.py <username> &
 ```
