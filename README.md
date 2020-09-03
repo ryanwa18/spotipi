@@ -1,4 +1,4 @@
-# Spotipy
+# Spotipi
 ### Overview
 This project is to display information on 32x32 led matrix from the Spotify web api.
 ### Getting Started
