@@ -31,6 +31,6 @@ ulimit -Sr 99
 ```
 ### Start Software
 ```
-cd spotipy
+cd spotipi
 sudo python --preserve-env displayCoverArt.py <username> &
 ```
