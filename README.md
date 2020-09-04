@@ -7,7 +7,7 @@ This project is to display information on 32x32 led matrix from the Spotify web 
     * Set the redirect uri to any local url such as http://127.0.0.1/callback
 * Clone the repository to your raspberrypi 
 ```
-git clone https://github.com/ryanwa18/spotipy.git
+git clone https://github.com/ryanwa18/spotipi.git
 ```
 * Install the led matrix software by Henner Zeller <br />
 ```
