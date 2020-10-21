@@ -10,7 +10,7 @@ from transferImage import display
 
 def getSongInfo(username):
   scope = 'user-read-currently-playing'
-  token = util.prompt_for_user_token(username, scope)
+  token = util.prompt_for_user_token(username, scope, cache_path="/home/pi/spotipi/.cache-ryanwa18")
 
   if token:
       sp = spotipy.Spotify(auth=token)
