@@ -1,0 +1,13 @@
+[Unit]
+Description=Spotipi led matrix service
+
+[Service]
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=spotipi
+LimitRTPRIO=99
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
