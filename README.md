@@ -29,9 +29,13 @@ python python/generateToken.py <username>
 ```
 scp .cache-<username> pi@spotipy.local:/home/pi
 ```
-* Clone the repository to your raspberrypi 
+* Clone the repository to your raspberrypi
 ```
 git clone https://github.com/ryanwa18/spotipi.git
+```
+* Move the token file to the repository root
+```
+mv <path_to_cache_file> <path_to_cloned_repository>
 ```
 * Install the software: <br />
 ```
