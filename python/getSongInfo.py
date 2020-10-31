@@ -8,9 +8,9 @@ from PIL import Image
 
 from transferImage import display
 
-def getSongInfo(username):
+def getSongInfo(username, token_path):
   scope = 'user-read-currently-playing'
-  token = util.prompt_for_user_token(username, scope, cache_path="/home/pi/spotipi/.cache-ryanwa18")
+  token = util.prompt_for_user_token(username, scope, cache_path=token_path)
 
   if token:
       sp = spotipy.Spotify(auth=token)

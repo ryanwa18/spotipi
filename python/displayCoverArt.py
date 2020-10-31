@@ -4,9 +4,10 @@ import logging
 from logging.handlers import RotatingFileHandler
 from getSongInfo import getSongInfo
 
-if len(sys.argv) > 1:
+if len(sys.argv) > 2:
     username = sys.argv[1]
-    
+    token_path = sys.argv[2]
+
     # Configures logger for storing song data    
     logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', filename='spotipy.log',level=logging.INFO)
     logger = logging.getLogger('spotipy_logger')
@@ -16,7 +17,7 @@ if len(sys.argv) > 1:
     logger.addHandler(handler)
 
     while 1:
-      getSongInfo(username)
+      getSongInfo(username, token_path)
 else:
     print("Usage: %s username" % (sys.argv[0],))
     sys.exit()
