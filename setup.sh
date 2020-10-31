@@ -39,9 +39,9 @@ sudo mkdir /etc/systemd/system/spotipi.service.d
 spotipi_env_path=/etc/systemd/system/spotipi.service.d/spotipi_env.conf
 sudo touch $spotipi_env_path
 sudo echo "[Service]" >> $spotipi_env_path
-sudo echo "Environment=\"SPOTIFY_CLIENT_ID=${spotify_client_id}\"" >> $spotipi_env_path
-sudo echo "Environment=\"SPOTIFY_CLIENT_SECRET=${spotify_client_secret}\"" >> $spotipi_env_path
-sudo echo "Environment=\"SPOTIFY_REDERICT_URI=${spotify_redirect_uri}\"" >> $spotipi_env_path
+sudo echo "Environment=\"SPOTIPY_CLIENT_ID=${spotify_client_id}\"" >> $spotipi_env_path
+sudo echo "Environment=\"SPOTIPY_CLIENT_SECRET=${spotify_client_secret}\"" >> $spotipi_env_path
+sudo echo "Environment=\"SPOTIPY_REDIRECT_URI=${spotify_redirect_uri}\"" >> $spotipi_env_path
 sudo systemctl daemon-reload
 sudo systemctl start spotipi
 echo "...done"

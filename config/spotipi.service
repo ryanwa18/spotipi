@@ -8,6 +8,7 @@ SyslogIdentifier=spotipi
 LimitRTPRIO=99
 Restart=always
 RestartSec=3
+EnvironmentFile=/etc/systemd/system/spotipi.service.d/spotipi_env.conf
 
 [Install]
 WantedBy=multi-user.target
