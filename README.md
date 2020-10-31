@@ -22,7 +22,7 @@ export SPOTIPY_REDIRECT_URI=your_spotify_redirect_uri
 ```
 * Go ahead and now run the software by replacing <username> with your spotify username
 ```
-python generateToken.py <username>
+python python/generateToken.py <username>
 ```
 * This will generate a file named `.cache-<username>`
 * You are going to want to scp this file over to your raspberry pi
@@ -33,28 +33,8 @@ scp .cache-<username> pi@spotipy.local:/home/pi
 ```
 git clone https://github.com/ryanwa18/spotipi.git
 ```
-* Install the led matrix software by Henner Zeller <br />
-```
-curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/rgb-matrix.sh >rgb-matrix.sh
-sudo bash rgb-matrix.sh
-```
-* Install the following python packages
-```
-pip install spotipy
-```
-* Set the following environment variables
-```
-export SPOTIPY_CLIENT_ID=your_spotify_client_id
-export SPOTIPY_CLIENT_SECRET=your_spotify_secret_id
-export SPOTIPY_REDIRECT_URI=your_spotify_redirect_uri
-```
-* Make sure to set the resource limit for root user
-```
-sudo su
-ulimit -Sr 99
-```
-### Start Software
+* Install the software: <br />
 ```
 cd spotipi
-sudo --preserve-env python displayCoverArt.py <username> &
+sudo bash setup.sh
 ```
