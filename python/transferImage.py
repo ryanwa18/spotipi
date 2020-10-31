@@ -1,17 +1,25 @@
 from PIL import Image
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
 import time
-import sys
+import sys,os
+import configparser
 
 def display(image, timeLeft):
+  dir = os.path.dirname(__file__)
+  filename = os.path.join(dir, '../config/rgb_options.ini')
+
   # Configuration for the matrix
+  config = configparser.ConfigParser()
+  config.read(filename)
+
   options = RGBMatrixOptions()
-  options.rows = 32
-  options.chain_length = 1
-  options.parallel = 1
-  options.hardware_mapping = 'adafruit-hat-pwm'  # If you have an Adafruit HAT: 'adafruit-hat'
-  options.gpio_slowdown = 2
-  options.brightness=40
+  options.rows = int(config['DEFAULT']['rows'])
+  options.chain_length = int(config['DEFAULT']['chain_length'])
+  options.parallel = int(config['DEFAULT']['parallel'])
+  options.hardware_mapping = config['DEFAULT']['hardware_mapping']
+  options.gpio_slowdown = int(config['DEFAULT']['gpio_slowdown'])
+  options.brightness = int(config['DEFAULT']['brightness'])
+
   matrix = RGBMatrix(options = options)
 
   # Make image fit our screen.
@@ -28,10 +36,3 @@ def display(image, timeLeft):
   for n in range(0, 33):  # Start off top-left, move off bottom-right
     matrix.SetImage(image.convert('RGB'), n, 0)
     time.sleep(0.03)
-    matrix.Clear()
-#  try:
-#      print("Press CTRL-C to stop.")
-#      while timeLeft > 10:
-#        time.sleep(5)
-#  except KeyboardInterrupt:
-#      sys.exit(0)
