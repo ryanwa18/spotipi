@@ -1,6 +1,7 @@
 # Spotipi
 ### Overview
 This project is to display information on 32x32 led matrix from the Spotify web api.
+![](https://i.redd.it/8s1cxqo5jfk51.jpg)
 ### Getting Started
 * Create a new application within the [Spotify developer dashboard](https://developer.spotify.com/dashboard/applications) <br />
 * Edit the settings of the application within the dashboard.
