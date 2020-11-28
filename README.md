@@ -15,18 +15,12 @@ git clone  https://github.com/ryanwa18/spotipi.git
 ```
 cd spotipi
 ```
-* Next we are going to need to set the following environment variables to be used for authentication to the Spotify web api.
+* Run the generate token script and enter the prompted spotify credentials using
 ```
-export SPOTIPY_CLIENT_ID=your_spotify_client_id
-export SPOTIPY_CLIENT_SECRET=your_spotify_secret_id
-export SPOTIPY_REDIRECT_URI=your_spotify_redirect_uri
-```
-* Go ahead and now run the software by replacing <username> with your spotify username
-```
-python python/generateToken.py <username>
+bash generate-token.sh
 ```
 * This will generate a file named `.cache-<username>`
-* You are going to want to scp this file over to your raspberry pi
+* You are going to want to scp this file over to your raspberry pi, for example:
 ```
 scp .cache-<username> pi@spotipy.local:/home/pi
 ```
