@@ -7,7 +7,7 @@ This project is to display information on 32x32 led matrix from the Spotify web 
 * Edit the settings of the application within the dashboard.
     * Set the redirect uri to any local url such as http://127.0.0.1/callback
 * Before logging into the raspberry pi, you will need to generate an authentication token.
-* To do this, you are going to want to clone my spotipi repository on your main computer.
+* To do this, you are going to want to clone my spotipi repository on your main computer with access to a web browser.
 ```
 git clone  https://github.com/ryanwa18/spotipi.git
 ```
