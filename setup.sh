@@ -23,8 +23,10 @@ install_path=$(pwd)
 echo "Downloading rgb-matrix software setup:"
 curl https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/rgb-matrix.sh >rgb-matrix.sh
 
+sed -n '/REBOOT NOW?/q;p' < rgb-matrix.sh > rgb-matrix-spotipi.sh
+
 echo "Running rgb-matrix software setup:"
-sudo bash rgb-matrix.sh
+sudo bash rgb-matrix-spotipi.sh
 
 echo "Removing rgb-matrix setup script:"
 sudo rm rgb-matrix.sh
@@ -49,3 +51,13 @@ sudo echo "Environment=\"SPOTIPY_REDIRECT_URI=${spotify_redirect_uri}\"" >> $spo
 sudo systemctl daemon-reload
 sudo systemctl start spotipi
 echo "...done"
+
+echo -n "REBOOT NOW? [y/N] "
+read
+if [[ ! "$REPLY" =~ ^(yes|y|Y)$ ]]; then
+        echo "Exiting without reboot."
+        exit 0
+fi
+echo "Reboot started..."
+reboot
+sleep infinity
