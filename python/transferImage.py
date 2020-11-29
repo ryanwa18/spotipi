@@ -1,10 +1,17 @@
 from PIL import Image
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
+from threading import Thread
+
 import time
 import sys,os
 import configparser
 
-def display(image, timeLeft):
+def timer(timeLeft):
+  while timeLeft > 0:
+    sleep(1)
+    timeLeft = timeLeft - 1
+
+def config():
   dir = os.path.dirname(__file__)
   filename = os.path.join(dir, '../config/rgb_options.ini')
 
@@ -20,19 +27,14 @@ def display(image, timeLeft):
   options.gpio_slowdown = int(config['DEFAULT']['gpio_slowdown'])
   options.brightness = int(config['DEFAULT']['brightness'])
 
+def display(image, timeLeft):
+  config()
+  timer_thread = Thread(target=timer)
+
   matrix = RGBMatrix(options = options)
 
   # Make image fit our screen.
   image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-
-  for n in range(-32, 0):  # Start off top-left, move off bottom-right
-    matrix.SetImage(image.convert('RGB'), n, 0)
-    time.sleep(0.03)  
-    matrix.Clear()
-
-  matrix.SetImage(image.convert('RGB')) 
-  time.sleep(10)
   
-  for n in range(0, 33):  # Start off top-left, move off bottom-right
-    matrix.SetImage(image.convert('RGB'), n, 0)
-    time.sleep(0.03)
+  while not timer_thread.is_alive()
+    matrix.SetImage(image.convert('RGB'))   
