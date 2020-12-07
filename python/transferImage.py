@@ -14,6 +14,7 @@ def display(image, timeLeft):
 
   options = RGBMatrixOptions()
   options.rows = int(config['DEFAULT']['rows'])
+  options.cols = int(config['DEFAULT']['columns'])
   options.chain_length = int(config['DEFAULT']['chain_length'])
   options.parallel = int(config['DEFAULT']['parallel'])
   options.hardware_mapping = config['DEFAULT']['hardware_mapping']
