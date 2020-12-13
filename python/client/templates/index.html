@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Starter Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/static/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      body {
+        padding-top: 5rem;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/static/starter-template.css" rel="stylesheet">
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">spotipi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" href="#">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/ryanwa18/spotipi/blob/develop/README.md">Documentation</a>
+        </li>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="starter-template py-5 px-3">
+    <h1>Settings</h1>
+    <form action="/brightness" method="POST"> 
+      <div class="form-group">
+        <label for="formControlRange">Brightness</label>
+        <input type="range" class="form-control-range" id="formControlRange" step="10" name="brightness" value="{{ brightness }}">
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </form>
+    <form>
+      <div class="form-group">
+        <label>Power</label>
+        <button type="button" class="btn btn-success" disabled>On</button>
+        <button type="button" class="btn btn-danger">Off</button>
+      </div>
+    </form>
+    <form class="form-row">
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Height</label>
+      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <option selected>32</option>
+        <option value="1">64</option>
+      </select>
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref2">Width</label>
+      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref2">
+        <option selected>32</option>
+        <option value="1">64</option>
+      </select>
+    </form>
+  </div>
+
+</main><!-- /.container -->
+
+
+    <script src="/static/bootstrap.min.js"></script>
+
+      
+  </body>
+</html>
