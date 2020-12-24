@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Ryan Ward">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Starter Template · Bootstrap v5.0</title>
+    <title>spotipi - Ryan Ward</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
 
@@ -31,6 +31,9 @@
       }
       body {
         padding-top: 5rem;
+      }
+      form {
+        margin-bottom: 2rem;
       }
     </style>
 
@@ -66,28 +69,29 @@
     <form action="/brightness" method="POST"> 
       <div class="form-group">
         <label for="formControlRange">Brightness</label>
-        <input type="range" class="form-control-range" id="formControlRange" step="10" name="brightness" value="{{ brightness }}">
+        <input min="10" type="range" class="form-control-range" id="formControlRange" step="10" name="brightness" value="{{ brightness }}">
         <button type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
-    <form>
-      <div class="form-group">
-        <label>Power</label>
-        <button type="button" class="btn btn-success" disabled>On</button>
-        <button type="button" class="btn btn-danger">Off</button>
-      </div>
-    </form>
-    <form class="form-row">
+    <form action="/size", method="POST" class="form-row">
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Height</label>
-      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-        <option selected>32</option>
-        <option value="1">64</option>
+      <select name="width" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <option {% if width==32 %} selected="selected"{% endif %} value="32">32</option>
+        <option {% if width==64 %} selected="selected"{% endif %} value="64">64</option>
       </select>
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref2">Width</label>
-      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref2">
-        <option selected>32</option>
-        <option value="1">64</option>
+      <select name="height" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref2">
+        <option {% if width==32 %} selected="selected"{% endif %} value="32">32</option>
+        <option {% if width==64 %} selected="selected"{% endif %} value="64">64</option>
       </select>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <form action="/power", method="POST">
+      <div class="form-group">
+        <label>Power</label>
+        <input {% if power=='on' %} disabled="disabled"{% endif %} type="submit" name="power" class="btn btn-success" value="on"></input>
+        <input {% if power=='off' %} disabled="disabled"{% endif %} type="submit" name="power" class="btn btn-danger" value="off"></input>
+      </div>
     </form>
   </div>
 
