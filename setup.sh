@@ -38,6 +38,12 @@ sudo rm -rf /etc/systemd/system/spotipi.*
 sudo systemctl daemon-reload
 echo "...done"
 
+echo "Removing spotipi-client service if it exists:"
+sudo systemctl stop spotipi-client
+sudo rm -rf /etc/systemd/system/spotipi-client.*
+sudo systemctl daemon-reload
+echo "...done"
+
 echo "Creating spotipi service:"
 sudo cp ./config/spotipi.service /etc/systemd/system/
 sudo sed -i -e "/\[Service\]/a ExecStart=python ${install_path}/python/displayCoverArt.py ${spotify_username} ${spotify_token_path} < /dev/zero &> /dev/null &" /etc/systemd/system/spotipi.service
@@ -52,6 +58,14 @@ sudo systemctl daemon-reload
 sudo systemctl start spotipi
 echo "...done"
 
+echo "Creating spotipi-client service:"
+sudo cp ./config/spotipi-client.service /etc/systemd/system/
+sudo sed -i -e "/\[Service\]/a ExecStart=python ${install_path}/python/client/app.py &" /etc/systemd/system/spotipi-client.service
+sudo systemctl daemon-reload
+sudo systemctl start spotipi-client
+echo "...done"
+
+echo -n "In order to finish setup a reboot is necessary..."
 echo -n "REBOOT NOW? [y/N] "
 read
 if [[ ! "$REPLY" =~ ^(yes|y|Y)$ ]]; then

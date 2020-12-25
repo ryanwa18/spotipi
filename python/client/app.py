@@ -68,5 +68,4 @@ def handle_size():
     job = manager.RestartUnit('spotipi.service', 'fail')
     return render_template('index.html', brightness = brightness, width = int(request.form['width']), height = int(request.form['height']), power = power)
 
-app.debug = True
 app.run(host='0.0.0.0', port=80) 
