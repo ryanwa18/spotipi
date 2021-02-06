@@ -3,6 +3,9 @@
 echo "Installing spotipy library:"
 pip install spotipy --upgrade
 
+echo "Installing flask library:"
+pip install flask --upgrade
+
 echo "Enter your Spotify Client ID:"
 read spotify_client_id
 
@@ -56,6 +59,7 @@ sudo echo "Environment=\"SPOTIPY_CLIENT_SECRET=${spotify_client_secret}\"" >> $s
 sudo echo "Environment=\"SPOTIPY_REDIRECT_URI=${spotify_redirect_uri}\"" >> $spotipi_env_path
 sudo systemctl daemon-reload
 sudo systemctl start spotipi
+sudo systemctl enable spotipi
 echo "...done"
 
 echo "Creating spotipi-client service:"
@@ -63,6 +67,7 @@ sudo cp ./config/spotipi-client.service /etc/systemd/system/
 sudo sed -i -e "/\[Service\]/a ExecStart=python ${install_path}/python/client/app.py &" /etc/systemd/system/spotipi-client.service
 sudo systemctl daemon-reload
 sudo systemctl start spotipi-client
+sudo systemctl enable spotipi-client
 echo "...done"
 
 echo -n "In order to finish setup a reboot is necessary..."
