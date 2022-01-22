@@ -23,6 +23,12 @@ bash generate-token.sh
 ```
 scp .cache-<username> pi@spotipy.local:/home/pi
 ```
+* SSH into your raspberrypi
+```
+ssh raspberrypi.local -l pi
+```
+* It will ask you for a password so just type in a password of your choice
+
 * Clone the repository to your raspberrypi
 ```
 git clone https://github.com/ryanwa18/spotipi.git
@@ -36,10 +42,20 @@ mv <path_to_cache_file> <path_to_cloned_repository>
 cd spotipi
 sudo bash setup.sh
 ```
+* It will ask you again for spotifyt credentials and the full path to the spotify token
+* After this it will run a bash script that will install all of the drivers for the RGB matrix
+* It will ask you for your interface board type which should by the Bonnet so select 1
+* Next it will ask you to choose between QUALITY and CONVENIENCE (sound vs no sound, requires soldering vs no soldering), choose your preference by typing 1 or 2
+* After it finishes setting up its gonna ask you to reboot, type y to confirm
+* You can check if your raspberrypi is running properly after reboot by pinging it using
+```
+ping raspeberrypi.local
+```
 * Edit settings on the web app: <br />
 ```
 navigate to http://<raspberrypi_hostname or ip_address> within a web browser
 ```
+* After this your rgb matrix should be displaying your cover art, enjoy!
 
 ### Final Product
 ![](https://i.redd.it/8s1cxqo5jfk51.jpg)
