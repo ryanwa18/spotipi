@@ -2,6 +2,7 @@ import time
 import sys
 import logging
 from logging.handlers import RotatingFileHandler
+from tkinter import image_names
 from getSongInfo import getSongInfo
 import requests
 from io import BytesIO
@@ -43,15 +44,18 @@ if len(sys.argv) > 2:
     default_image = os.path.join(dir, config['DEFAULT']['default_image'])
     print(default_image)
     matrix = RGBMatrix(options = options)
+    lastImageUrl = None
     
     try:
       while True:
         try:
           imageURL = getSongInfo(username, token_path)[1]
-          response = requests.get(imageURL)
-          image = Image.open(BytesIO(response.content))
-          image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-          matrix.SetImage(image.convert('RGB'))
+          if lastImageUrl != imageURL:
+            response = requests.get(imageURL)
+            image = Image.open(BytesIO(response.content))
+            image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+            matrix.SetImage(image.convert('RGB'))
+          lastImageUrl = imageURL
           time.sleep(1)
         except Exception as e:
           image = Image.open(default_image)
