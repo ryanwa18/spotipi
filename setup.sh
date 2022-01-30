@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Ensure packages are installed:"
-sudo apt-get install libopenjp2-7
+sudo apt-get install libopenjp2-7 python3-dbus
 
 echo "Installing spotipy library:"
 pip install spotipy --upgrade
