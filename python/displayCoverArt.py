@@ -2,7 +2,6 @@ import time
 import sys
 import logging
 from logging.handlers import RotatingFileHandler
-from tkinter import image_names
 from getSongInfo import getSongInfo
 import requests
 from io import BytesIO
