@@ -54,7 +54,7 @@ if len(sys.argv) > 2:
             image = Image.open(BytesIO(response.content))
             image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
             matrix.SetImage(image.convert('RGB'))
-          lastImageUrl = imageURL
+            lastImageUrl = imageURL
           time.sleep(1)
         except Exception as e:
           image = Image.open(default_image)
