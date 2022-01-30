@@ -86,6 +86,16 @@
       </select>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
+    <form action="/refresh-rate" method="POST" class="form-row">
+      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Refresh Rate (Hz)</label>
+      <select name="refresh_rate" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+        <option {% if refresh_rate==60 %} selected="selected"{% endif %} value="60">60</option>
+        <option {% if refresh_rate==90 %} selected="selected"{% endif %} value="90">90</option>
+        <option {% if refresh_rate==120 %} selected="selected"{% endif %} value="120">120</option>
+      </select>
+      </select>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
     <form action="/power", method="POST">
       <div class="form-group">
         <label>Power</label>
