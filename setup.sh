@@ -1,7 +1,13 @@
 #!/bin/bash
 
+echo "Ensure packages are installed:"
+sudo apt-get install libopenjp2-7
+
 echo "Installing spotipy library:"
 pip install spotipy --upgrade
+
+echo "Installing pillow library:"
+pip install pillow --upgrade
 
 echo "Installing flask library:"
 pip install flask --upgrade

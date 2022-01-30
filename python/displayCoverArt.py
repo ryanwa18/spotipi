@@ -38,7 +38,8 @@ if len(sys.argv) > 2:
     options.hardware_mapping = config['DEFAULT']['hardware_mapping']
     options.gpio_slowdown = int(config['DEFAULT']['gpio_slowdown'])
     options.brightness = int(config['DEFAULT']['brightness'])
-    
+    options.limit_refresh_rate_hz = int(config['DEFAULT']['refresh_rate'])
+
     default_image = os.path.join(dir, config['DEFAULT']['default_image'])
     print(default_image)
     matrix = RGBMatrix(options = options)
@@ -52,10 +53,11 @@ if len(sys.argv) > 2:
           image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
           matrix.SetImage(image.convert('RGB'))
           time.sleep(1)
-        except:
+        except Exception as e:
           image = Image.open(default_image)
           image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
           matrix.SetImage(image.convert('RGB'))
+          print(e)
           time.sleep(1)
     except KeyboardInterrupt:
       sys.exit(0)
