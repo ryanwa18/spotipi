@@ -5,8 +5,7 @@ This project is to display information on 32x32 led matrix from the Spotify web 
 * Create a new application within the [Spotify developer dashboard](https://developer.spotify.com/dashboard/applications) <br />
 * Edit the settings of the application within the dashboard.
     * Set the redirect uri to any local url such as http://127.0.0.1/callback
-* Before logging into the raspberry pi, you will need to generate an authentication token.
-* To do this, you are going to want to clone my spotipi repository on your main computer with access to a web browser.
+* First step is to ssh to your raspberry pi to clone the repository
 ```
 git clone  https://github.com/ryanwa18/spotipi.git
 ```
@@ -18,19 +17,10 @@ cd spotipi
 ```
 bash generate-token.sh
 ```
-* This will generate a file named `.cache-<username>`
-* You are going to want to scp this file over to your raspberry pi, for example:
-```
-scp .cache-<username> pi@spotipy.local:/home/pi
-```
-* Clone the repository to your raspberrypi
-```
-git clone https://github.com/ryanwa18/spotipi.git
-```
-* Move the token file to the repository root
-```
-mv <path_to_cache_file> <path_to_cloned_repository>
-```
+* This will generate a file named `.cache` which will be used for authentication
+    * A url will show up in the terminal window and you must copy this into your own web broswer
+    * The url will redirect you to another url and you need to copy/paste this in the terminal when prompted.
+   
 * Install the software: <br />
 ```
 cd spotipi
