@@ -56,14 +56,14 @@ if len(sys.argv) > 2:
           if ( prevSong != currentSong ):
             response = requests.get(imageURL)
             image = Image.open(BytesIO(response.content))
-            image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+            image.thumbnail((matrix.width, matrix.height), Image.Resampling.LANCZOS)
             matrix.SetImage(image.convert('RGB'))
             prevSong = currentSong
 
           time.sleep(1)
         except Exception as e:
           image = Image.open(default_image)
-          image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+          image.thumbnail((matrix.width, matrix.height), Image.Resampling.LANCZOS)
           matrix.SetImage(image.convert('RGB'))
           print(e)
           time.sleep(1)
