@@ -1,5 +1,5 @@
 echo "Installing spotipy library:"
-pip install spotipy --upgrade
+pip install spotipy==2.23.0
 
 echo "Enter your Spotify Client ID:"
 read spotify_client_id
@@ -20,4 +20,4 @@ python python/generateToken.py $spotify_username
 
 echo
 echo "###### Spotify Token Created ######"
-echo "Filename: .cache-$spotify_username"
+echo "Filename: .cache"
